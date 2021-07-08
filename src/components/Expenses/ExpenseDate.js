@@ -1,6 +1,6 @@
 import './ExpenseDate.css';
 
-function ExprenseDate(props) {
+const ExprenseDate = (props) => {
   const month = formatDate({ month: "long" });
   const day = formatDate({ day: "2-digit" });
   const year = props.date.getFullYear();

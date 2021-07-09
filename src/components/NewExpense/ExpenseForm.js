@@ -36,12 +36,17 @@ const ExpenseForm = (props) => {
     });
   };
 
-  const formSubmitHandler = () => {
-    console.log("expense =>", expense);
+  const submitHandler = event => {
+    event.preventDefault();
+    const finalExpense = {
+        ...expense,
+        date: new Date(expense.date)
+    }
+    console.log(finalExpense)
   };
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <label>Title</label>
         <input type="text" onChange={titleChangeHandler} />
@@ -65,7 +70,7 @@ const ExpenseForm = (props) => {
         />
       </div>
       <div className="new-expense__actions">
-        <button onClick={formSubmitHandler} type="submit">
+        <button type="submit">
           Add Expense
         </button>
       </div>

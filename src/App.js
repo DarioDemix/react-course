@@ -8,7 +8,7 @@ const App = () => {
   initialExpenses.forEach(exp => exp.date = new Date(exp.date))
   const [ expenses, setExpenses ] = useState(initialExpenses);
 
-  const addExpenseHandler = expense => setExpenses(oldValue => [...oldValue, expense]);
+  const addExpenseHandler = expense => setExpenses(oldValue => [expense, ...oldValue]);
 
   return (
     <div>

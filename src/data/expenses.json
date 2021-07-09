@@ -23,6 +23,12 @@
       "title": "New Desk (Wooden)",
       "amount": 450,
       "date": "2020-04-12"
+    },
+    {
+      "id": "e5",
+      "title": "I, Robot",
+      "amount": 12,
+      "date": "2020-12-12"
     }
   ]
 }

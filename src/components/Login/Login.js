@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useReducer } from "react";
+import { useEffect, useState, useReducer, useContext } from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
+import AuthContext from "../context/auth-context";
 
 const userInput = 'USER_INPUT';
 const inputBlur = 'INPUT_BLUR';
@@ -38,11 +39,7 @@ const passwordReducer = (state, action) => {
   return updatedState;
 };
 
-const Login = (props) => {
-  // const [enteredEmail, setEnteredEmail] = useState('');
-  // const [emailIsValid, setEmailIsValid] = useState();
-  // const [enteredPassword, setEnteredPassword] = useState("");
-  // const [passwordIsValid, setPasswordIsValid] = useState();
+const Login = () => {
   const [formIsValid, setFormIsValid] = useState(false);
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
@@ -56,6 +53,8 @@ const Login = (props) => {
 
   const { isValid: emailIsvalid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
+
+  const authCxt = useContext(AuthContext);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -91,7 +90,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, passwordState.value);
+    authCxt.onLogin(emailState.value, passwordState.value);
   };
 
   return (
